@@ -10,3 +10,15 @@ Target Host: dirka
 12-29-2018-12:12:05 - Get-NodeStatus - Runtime seconds: 0.0768
 12-29-2018-12:12:06 - Get-NodeStatus - Removing runctr.log
 12-29-2018-12:12:06 - Get-NodeStatus - Creating new runctr log
+12-29-2018-12:12:02 - Start-LocalClient - Beginning run of Start-LocalClient
+12-29-2018-12:12:03 - Start-LocalClient - Beginning Loop...
+12-29-2018-12:12:59 - Start-LocalClient - Beginning run of Start-LocalClient
+12-29-2018-12:12:00 - Start-LocalClient - Beginning Loop...
+12-29-2018-12:12:01 - Start-LocalClient - New Job Available
+12-29-2018-12:12:01 - Start-LocalClient - Scriptname: Get-NodeStatus.ps1
+Target Host: dirka
+12-29-2018-12:12:02 - Start-LocalClient - Running job Get-NodeStatus.ps1
+12-29-2018-12:12:04 - Get-NodeStatus - Old Count: 7 - New Count: 8
+12-29-2018-12:12:05 - Get-NodeStatus - Runtime seconds: 0.0768
+12-29-2018-12:12:06 - Get-NodeStatus - Removing runctr.log
+12-29-2018-12:12:06 - Get-NodeStatus - Creating new runctr log

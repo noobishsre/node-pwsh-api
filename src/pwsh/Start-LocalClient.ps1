@@ -7,8 +7,8 @@
 Function Start-LocalClient
 {
     $functionName = $MyInvocation.MyCommand.Name 
-    $writeLogScript = "/home/dirka/git/nodejs/node-pwsh-api/src/pwsh/Write-Log.ps1"
-    $jobsJsonFile = "/home/dirka/git/nodejs/node-pwsh-api/src/queue/jobs.json"
+    $writeLogScript = "/home/dirka/git/node-pwsh-api/src/pwsh/Write-Log.ps1"
+    $jobsJsonFile = "/home/dirka/git/node-pwsh-api/src/queue/jobs.json"
     $run = $true
     $ctr = 0
     while($run -eq $true)
@@ -28,7 +28,7 @@ Function Start-LocalClient
             $scriptname = $content.script_name
             $targetHost = $content.host_name
             pwsh $writeLogScript -filename $functionName -logMessage "Scriptname: $scriptname`nTarget Host: $targetHost"
-            $scriptpath = "/home/dirka/git/nodejs/node-pwsh-api/src/pwsh/$scriptname"
+            $scriptpath = "/home/dirka/git/node-pwsh-api/src/pwsh/$scriptname"
             pwsh $writeLogScript -filename $functionName -logMessage "Running job $scriptname"
             pwsh $scriptpath
             $run = $false

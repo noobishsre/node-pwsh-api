@@ -16,7 +16,7 @@ Function Write-Log
     )
     $date = Get-Date
     [string]$ts = $date.ToString("MM-dd-yyyy-HH:MM:ss")
-    $logPath = "/home/dirka/git/nodejs/node-pwsh-api/src/logs/runtimelog.log"
+    $logPath = "/home/dirka/git/node-pwsh-api/src/logs/runtimelog.log"
     $outMessage = "$ts - $filename - $logMessage"
     $outMessage | out-file -Append $logPath
 }
