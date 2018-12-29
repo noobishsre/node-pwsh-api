@@ -1,0 +1,28 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "api",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noobishsre/nodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Derrick E",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noobishsre/nodejs/issues"
+  },
+  "homepage": "https://github.com/noobishsre/nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.19",
+    "node-powershell": "^3.3.1"
+  }
+}
