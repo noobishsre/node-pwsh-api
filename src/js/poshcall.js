@@ -1,14 +1,15 @@
-const shell = require('node-powershell');
+const shell = require('node-powershell'); //need to install module
  
 let ps = new shell({
   executionPolicy: 'Bypass',
   noProfile: true
 });
- 
-ps.addCommand('echo node-powershell')
+var testpc = 'Test-Computer';
+ps.addCommand('powershell c:\\git\\node-pwsh-api\\src\\pwsh\\Start-PwshTest.ps1 -ComputerName ' + testpc)
 ps.invoke()
 .then(output => {
   console.log(output);
+  ps.dispose();
 })
 .catch(err => {
   console.log(err);
