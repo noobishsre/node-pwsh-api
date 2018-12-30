@@ -40,7 +40,7 @@ module.exports = function(app, db) {
         noProfile: true
       });
       ps.addCommand('powershell c:\\temp\\Start-PwshTest.ps1 -ComputerName ' + testpc)
-      ps.addCommand('pwsh /home/dirka/git/node-pwsh-api/src/pwsh/Start-PwshTest.ps1 -ComputerName' + testpc)
+      ps.addCommand('pwsh /home/noobish/git/node-pwsh-api/src/pwsh/Start-PwshTest.ps1 -ComputerName' + testpc)
       ps.invoke()
       .then(output => {
         console.log(output);
