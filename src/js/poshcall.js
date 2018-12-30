@@ -5,7 +5,7 @@ let ps = new shell({
   noProfile: true
 });
 var testpc = 'Test-Computer';
-ps.addCommand('powershell c:\\git\\node-pwsh-api\\src\\pwsh\\Start-PwshTest.ps1 -ComputerName ' + testpc)
+ps.addCommand('pwsh c:\\git\\node-pwsh-api\\src\\pwsh\\Start-PwshTest.ps1 -ComputerName ' + testpc)
 ps.invoke()
 .then(output => {
   console.log(output);

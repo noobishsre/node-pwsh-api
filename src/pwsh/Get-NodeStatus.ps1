@@ -2,7 +2,7 @@ Function Get-NodeStatus
 {
     $writeLogScript = "/home/dirka/git/node-pwsh-api/src/pwsh/Write-Log.ps1"
     $functionName = $MyInvocation.MyCommand.Name 
-    $runCtrLog = "/home/dirka/git/node-pwsh-api/src/logs/runctr.log"
+    $runCtrLog = "/home/dirka/git/node-pwsh-api/src/logs/client_returndata_runctr.log"
     [int]$runCtr = Get-Content $runCtrLog
     [int]$newCount = $runCtr + 1
     pwsh $writeLogScript -filename $functionName -logMessage "Old Count: $runCtr - New Count: $newCount"

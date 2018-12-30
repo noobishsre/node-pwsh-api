@@ -1,14 +1,25 @@
 Param(
-    [string]$ComputerName
+    [string]$ComputerName,
+    [string]$osarchitecture
 )
 Function Start-PwshTest
 {
     Param(
         [Parameter(Mandatory=$true,
         ValueFromPipeline=$true,
-        HelpMessage="LogMessage:")]
-	    [string] $ComputerName
+        HelpMessage="Hostname:")]
+	    [string] $ComputerName,
+        [Parameter(Mandatory=$true,
+        ValueFromPipeline=$true,
+        HelpMessage="OS Architecture:")]
+	    [string] $osarchitecture
     )
+    $writeLogScript = "/home/dirka/git/node-pwsh-api/src/pwsh/Write-Log.ps1"
+    $functionName = $MyInvocation.MyCommand.Name 
+    $runCtrLog = "/home/dirka/git/node-pwsh-api/src/logs/noobish_hosts_runctr.log"
+    [int]$runCtr = Get-Content $runCtrLog
+    [int]$newCount = $runCtr + 1
+    pwsh $writeLogScript -filename $functionName -logMessage "Old Count: $runCtr - New Count: $newCount"
     $date = Get-date
     [string]$ts = $date.ToString("MM-dd-yyyy-HH:MM:ss")
 <#
@@ -35,10 +46,14 @@ Function Start-PwshTest
     }
     $outObj | out-file c:\temp\pwshouttest.txt
 #>
-    $outObj = @{
-        ComputerName = $ComputerName
-        Time = $ts
+    $body = @{
+        id = $newCount
+        hostname = $ComputerName
+        os = $osarchitecture
     }
-    Return $outObj | ConvertTo-JSON
+    $uri = "http://localhost:8000/noobish_hosts"
+
+    $return = Invoke-WebRequest -Uri $uri -Body $body -Method POST
+    Return $return
 }
-Start-PwshTest -Computername $ComputerName
+Start-PwshTest -Computername $ComputerName -osarchitecture $osarchitecture

@@ -22,3 +22,4 @@ Target Host: dirka
 12-29-2018-12:12:05 - Get-NodeStatus - Runtime seconds: 0.0768
 12-29-2018-12:12:06 - Get-NodeStatus - Removing runctr.log
 12-29-2018-12:12:06 - Get-NodeStatus - Creating new runctr log
+12-29-2018-21:12:57 - Start-PwshTest - Old Count: 5 - New Count: 6

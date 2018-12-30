@@ -33,12 +33,13 @@ module.exports = function(app, db) {
     });
 
     app.post('/noobish_hosts', (req, res) => {
+      /*
+      var testpc = 'PCName-AsVar';
       let ps = new shell({
         executionPolicy: 'Bypass',
         noProfile: true
       });
-      var testpc = 'Test-Computer';
-      //ps.addCommand('powershell c:\\temp\\Start-PwshTest.ps1 -ComputerName ' + testpc)
+      ps.addCommand('powershell c:\\temp\\Start-PwshTest.ps1 -ComputerName ' + testpc)
       ps.addCommand('pwsh /home/dirka/git/node-pwsh-api/src/pwsh/Start-PwshTest.ps1 -ComputerName' + testpc)
       ps.invoke()
       .then(output => {
@@ -49,9 +50,11 @@ module.exports = function(app, db) {
         console.log(err);
         ps.dispose();
       });
+      */
       const id = req.body.id;
-      //const note = { '_id':id,hostname: req.body.hostname, os: req.body.os };
-      const note = { '_id':id,hostname: testpc, os: req.body.os };
+      const note = { '_id':id,hostname: req.body.hostname, os: req.body.os };
+      //Confirmed the following works
+      //const note = { '_id':id,hostname: testpc, os: req.body.os };
       db.collection('noobish_hosts').insert(note, (err, result) => {
       if (err) { 
         res.send({ 'error': 'An error has occurred' }); 
