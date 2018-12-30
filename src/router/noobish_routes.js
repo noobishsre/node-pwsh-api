@@ -2,7 +2,8 @@ var ObjectID = require('mongodb').ObjectID;
 var express = require('express');
 var request = require('request');
 var app = express();
-
+const shell = require('node-powershell'); //need to install module
+ 
 
 module.exports = function(app, db) {
     app.get('/noobish_hosts/:id', (req, res) => {
@@ -32,8 +33,25 @@ module.exports = function(app, db) {
     });
 
     app.post('/noobish_hosts', (req, res) => {
+      let ps = new shell({
+        executionPolicy: 'Bypass',
+        noProfile: true
+      });
+      var testpc = 'Test-Computer';
+      //ps.addCommand('powershell c:\\temp\\Start-PwshTest.ps1 -ComputerName ' + testpc)
+      ps.addCommand('pwsh /home/dirka/git/node-pwsh-api/src/pwsh/Start-PwshTest.ps1 -ComputerName' + testpc)
+      ps.invoke()
+      .then(output => {
+        console.log(output);
+        ps.dispose();
+      })
+      .catch(err => {
+        console.log(err);
+        ps.dispose();
+      });
       const id = req.body.id;
-      const note = { '_id':id,hostname: req.body.hostname, os: req.body.os };
+      //const note = { '_id':id,hostname: req.body.hostname, os: req.body.os };
+      const note = { '_id':id,hostname: testpc, os: req.body.os };
       db.collection('noobish_hosts').insert(note, (err, result) => {
       if (err) { 
         res.send({ 'error': 'An error has occurred' }); 
