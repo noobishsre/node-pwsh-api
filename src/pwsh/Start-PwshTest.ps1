@@ -11,7 +11,7 @@ Function Start-PwshTest
     )
     $date = Get-date
     [string]$ts = $date.ToString("MM-dd-yyyy-HH:MM:ss")
-
+<#
     [psobject]$spoolerService = get-service | select Name, Status | where{$_.Name -match "spooler"}
     
     $connTestGood = Test-Connection -ComputerName T9779POS0001 -Count 1 -Quiet
@@ -34,6 +34,11 @@ Function Start-PwshTest
         Remove-Item C:\temp\pwshouttest.txt -Force
     }
     $outObj | out-file c:\temp\pwshouttest.txt
+#>
+    $outObj = @{
+        ComputerName = $ComputerName
+        Time = $ts
+    }
     Return $outObj | ConvertTo-JSON
 }
 Start-PwshTest -Computername $ComputerName
