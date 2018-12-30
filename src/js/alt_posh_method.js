@@ -1,5 +1,6 @@
+//Not sure if its even possible to pass a parameter. Looks like poshcall.js is the winner
 var spawn = require("child_process").spawn,child;
-child = spawn("powershell.exe",["c:\\temp\\helloworld.ps1"]);
+child = spawn("powershell.exe",["c:\\git\\node-pwsh-api\\src\\pwsh\\Start-PwshTest.ps1"]);
 child.stdout.on("data",function(data){
     console.log("Powershell Data: " + data);
 });
