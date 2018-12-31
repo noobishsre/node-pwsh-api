@@ -21,7 +21,6 @@ Function Start-LocalClient
     $run = $true
     $loopctr = 0
 
-
     ###############
     ## Runtime loop
     ###############
@@ -37,7 +36,6 @@ Function Start-LocalClient
         {
             $run = $false
         }
-        pwsh $writeLogScript -filename $functionName -logMessage "Beginning Loop..."
         
         ############################################
         ## If queue is not null, read from jobs.json
@@ -52,7 +50,6 @@ Function Start-LocalClient
             $targetHost = $content.host_name
             pwsh $writeLogScript -filename $functionName -logMessage "Scriptname: $scriptname`nTarget Host: $targetHost"
             $scriptpath = "/home/noobish/git/node-pwsh-api/src/pwsh/$scriptname"
-            pwsh $writeLogScript -filename $functionName -logMessage "Running job $scriptname"
             pwsh $scriptpath
             $run = $false
         }
